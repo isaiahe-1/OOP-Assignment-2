@@ -1,24 +1,20 @@
 public class Circle extends Shape {
 
-    // Variable
+    // Variables
     private double radius;
 
-    // Constructors
-    public Circle() {
-        super(0, new Coordinates(0, 0)); // circle has 0 sides
-        this.radius = 1;
-    }
-
-    public Circle(double r, Coordinates coord) {
+    // Constructor
+    public Circle(double radius, Coordinates coord) {
         super(0, coord);
-        this.radius = r;
+        this.radius = radius;
     }
 
-    // Getter and Setter
+    // Getter
     public double getRadius() {
         return radius;
     }
 
+    // Setter
     public void setRadius(double radius) {
         this.radius = radius;
     }
@@ -38,8 +34,8 @@ public class Circle extends Shape {
         position.translate(dx, dy);
     }
 
-    // Scale size
-    public void scale(int factor, boolean sign) {
+
+    public void scale(double factor, boolean sign) {
         if (sign) {
             radius = radius * factor;
         } else {

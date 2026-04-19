@@ -5,10 +5,9 @@ public class Triangle extends Shape {
     private Coordinates vertexB;
     private Coordinates vertexC;
 
-    // Default constructor
+    // Constructor
     public Triangle() {
-        super(3, new Coordinates(0, 0)); // triangle = 3 sides
-
+        super(3, new Coordinates(0, 0));
         vertexA = new Coordinates(0, 0);
         vertexB = new Coordinates(1, 0);
         vertexC = new Coordinates(0, 1);
@@ -16,33 +15,30 @@ public class Triangle extends Shape {
 
     // Constructor with values
     public Triangle(Coordinates a, Coordinates b, Coordinates c) {
-        super(3, a); // use A as position
-        this.vertexA = a;
-        this.vertexB = b;
-        this.vertexC = c;
+        super(3, a);
+        vertexA = a;
+        vertexB = b;
+        vertexC = c;
     }
 
-    // Get Area (simple formula)
+    // Heron's Formula
     public double getArea() {
-        double x1 = vertexA.getX();
-        double y1 = vertexA.getY();
+        double a = vertexA.distance(vertexB);
+        double b = vertexB.distance(vertexC);
+        double c = vertexC.distance(vertexA);
 
-        double x2 = vertexB.getX();
-        double y2 = vertexB.getY();
+        double s = (a + b + c) / 2.0;
 
-        double x3 = vertexC.getX();
-        double y3 = vertexC.getY();
-
-        return Math.abs((x1*(y2 - y3) + x2*(y3 - y1) + x3*(y1 - y2)) / 2.0);
+        return Math.sqrt(s * (s - a) * (s - b) * (s - c));
     }
 
     // Get Perimeter
     public double getPerimeter() {
-        double side1 = vertexA.distance(vertexB);
-        double side2 = vertexB.distance(vertexC);
-        double side3 = vertexC.distance(vertexA);
+        double a = vertexA.distance(vertexB);
+        double b = vertexB.distance(vertexC);
+        double c = vertexC.distance(vertexA);
 
-        return side1 + side2 + side3;
+        return a + b + c;
     }
 
     // Move triangle
@@ -53,23 +49,17 @@ public class Triangle extends Shape {
     }
 
     // Scale triangle
-    public void scale(int factor, boolean sign) {
-        if (sign) {
-            vertexA.scale(factor, true);
-            vertexB.scale(factor, true);
-            vertexC.scale(factor, true);
-        } else {
-            vertexA.scale(factor, false);
-            vertexB.scale(factor, false);
-            vertexC.scale(factor, false);
-        }
+    public void scale(double factor, boolean sign) {
+        vertexA.scale(factor, sign);
+        vertexB.scale(factor, sign);
+        vertexC.scale(factor, sign);
     }
 
-    // Display
+    // Display details
     public String display() {
-        return "Triangle | A(" + vertexA.getX() + "," + vertexA.getY() + ")" +
-                " B(" + vertexB.getX() + "," + vertexB.getY() + ")" +
-                " C(" + vertexC.getX() + "," + vertexC.getY() + ")" +
+        return "Triangle | A: " + vertexA.display() +
+                " B: " + vertexB.display() +
+                " C: " + vertexC.display() +
                 " | Area: " + getArea() +
                 " | Perimeter: " + getPerimeter();
     }

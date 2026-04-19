@@ -30,8 +30,8 @@ public abstract class Shape {
         position.translate(dx, dy);
     }
 
-    // Abstract methods
-    public abstract void scale(int factor, boolean sign);
+
+    public abstract void scale(double factor, boolean sign);
 
     public abstract double getArea();
 

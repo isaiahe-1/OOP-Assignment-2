@@ -6,7 +6,7 @@ public class Rectangle extends Shape {
 
     // Constructors
     public Rectangle() {
-        super(4, new Coordinates(0, 0)); // rectangle has 4 sides
+        super(4, new Coordinates(0, 0));
         this.width = 1;
         this.length = 1;
     }
@@ -50,8 +50,8 @@ public class Rectangle extends Shape {
         position.translate(dx, dy);
     }
 
-    // Scale size
-    public void scale(int factor, boolean sign) {
+    // Scale Method
+    public void scale(double factor, boolean sign) {
         if (sign) {
             width = width * factor;
             length = length * factor;

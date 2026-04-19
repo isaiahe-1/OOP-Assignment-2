@@ -21,7 +21,7 @@ public class Square extends Shape {
     }
 
     // Setter
-    public void set_side(double side) {
+    public void setSide(double side) {
         this.side = side;
     }
 
@@ -35,13 +35,8 @@ public class Square extends Shape {
         return 4 * side;
     }
 
-    // Translate square
-    public void translate(int dx, int dy) {
-        position.translate(dx, dy);
-    }
 
-    // Scale square
-    public void scale(int factor, boolean sign) {
+    public void scale(double factor, boolean sign) {
         if (sign) {
             side = side * factor;
         } else {
@@ -51,8 +46,8 @@ public class Square extends Shape {
 
     // Display details
     public String display() {
-        return "Square with Side = " + side +
-                " Area: " + getArea() +
-                " Perimeter: " + getPerimeter();
+        return "Square | Side: " + side +
+                " | Area: " + getArea() +
+                " | Perimeter: " + getPerimeter();
     }
 }

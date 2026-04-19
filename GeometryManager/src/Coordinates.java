@@ -33,20 +33,21 @@ public class Coordinates {
         y = y + dy;
     }
 
-    // Scale coordinates (fixed to match UML)
-    public void scale(int factor, boolean sign) {
+    // Scale Method
+    public void scale(double factor, boolean sign) {
 
         if (sign) {
-            x = x * factor;
-            y = y * factor;
+            x = (int) (x * factor);
+            y = (int) (y * factor);
         } else {
-            x = x / factor;
-            y = y / factor;
+            x = (int) (x / factor);
+            y = (int) (y / factor);
         }
     }
 
     // Display
     public String display() {
-        return "(" + x + ", " + y + ")";
+        return "X = " + x + ", Y = " + y;
     }
 }
+

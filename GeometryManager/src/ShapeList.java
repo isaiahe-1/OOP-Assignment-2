@@ -58,11 +58,16 @@ public class ShapeList {
         }
     }
 
-    // Scale one shape using its position
-    public void scale(int factor, int pos, boolean sign) {
-        if (pos >= 0 && pos < listOfShapes.size()) {
-            listOfShapes.get(pos).scale(factor, sign);
+    // Scale all shapes
+    public void scale(double factor, boolean sign) {
+        for (int i = 0; i < listOfShapes.size(); i++) {
+            listOfShapes.get(i).scale(factor, sign);
         }
+    }
+
+    // Get number of shapes
+    public int getNumberOfShapes() {
+        return listOfShapes.size();
     }
 
     // Display all shapes
