@@ -1,48 +1,71 @@
-public class Rectangle {
-    // Rectangle class that extends Shape
-    public class Rectangle extends Shape {
+public class Rectangle extends Shape {
 
-        // Variables to store width and length
-        private double width;
-        private double length;
+    // Variables
+    private double width;
+    private double length;
 
-        // Constructor
-        public Rectangle(double w, double l, Coordinates coord) {
-            super(4, coord);
-            width = w;
-            length = l;
-        }
+    // Constructors
+    public Rectangle() {
+        super(4, new Coordinates(0, 0)); // rectangle has 4 sides
+        this.width = 1;
+        this.length = 1;
+    }
 
-        // To calculate area
-        public double getArea() {
-            return width * length;
-        }
+    public Rectangle(double width, double length, Coordinates coord) {
+        super(4, coord);
+        this.width = width;
+        this.length = length;
+    }
 
-        // To calculate perimeter
-        public double getPerimeter() {
-            return 2 * (width + length);
-        }
+    // Getters
+    public double getWidth() {
+        return width;
+    }
 
-        //To move rectangle
-        public void translate(int dx, int dy) {
-            position.translate(dx, dy);
-        }
+    public double getLength() {
+        return length;
+    }
 
-        // To scale rectangle
-        public void scale(int factor, int sign, boolean both) {
+    // Setters
+    public void setWidth(double width) {
+        this.width = width;
+    }
+
+    public void setLength(double length) {
+        this.length = length;
+    }
+
+    // Get Area
+    public double getArea() {
+        return width * length;
+    }
+
+    // Get Perimeter
+    public double getPerimeter() {
+        return 2 * (width + length);
+    }
+
+    // Move position
+    public void translate(int dx, int dy) {
+        position.translate(dx, dy);
+    }
+
+    // Scale size
+    public void scale(int factor, boolean sign) {
+        if (sign) {
             width = width * factor;
             length = length * factor;
-
-            if (both) {
-                position.scale(factor, sign, both);
-            }
+        } else {
+            width = width / factor;
+            length = length / factor;
         }
+    }
 
-        // Display
-        public String display() {
-            return "Rectangle at " + position.display() +
-                    " width: " + width +
-                    " length: " + length;
-        }
+    // Display details
+    public String display() {
+        return "Rectangle | Width: " + width +
+                " | Length: " + length +
+                " | Area: " + getArea() +
+                " | Perimeter: " + getPerimeter();
     }
 }

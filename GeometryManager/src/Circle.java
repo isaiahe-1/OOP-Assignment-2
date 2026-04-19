@@ -1,62 +1,56 @@
-public class Circle {
-    // Circle class (inherits from Shape)
-    public class Circle extends Shape {
+public class Circle extends Shape {
 
-        // Variable
-        private double radius;
+    // Variable
+    private double radius;
 
-        // Default constructor
-        public Circle() {
-            super(0, new Coordinates(0, 0)); // this is because circle has 0 sides
-            this.radius = 1;
-        }
+    // Constructors
+    public Circle() {
+        super(0, new Coordinates(0, 0)); // circle has 0 sides
+        this.radius = 1;
+    }
 
-        // Constructor with radius and position
-        public Circle(double r, Coordinates coord) {
-            super(0, coord);
-            this.radius = r;
-        }
+    public Circle(double r, Coordinates coord) {
+        super(0, coord);
+        this.radius = r;
+    }
 
-        // Getter
-        public double getRadius() {
-            return radius;
-        }
+    // Getter and Setter
+    public double getRadius() {
+        return radius;
+    }
 
-        // Setter
-        public void setRadius(double radius) {
-            this.radius = radius;
-        }
+    public void setRadius(double radius) {
+        this.radius = radius;
+    }
 
-        // Calculate area
-        public double getArea() {
-            return radius * radius * Math.PI;
-        }
+    // Get Area
+    public double getArea() {
+        return Math.PI * radius * radius;
+    }
 
-        // Calculate perimeter
-        public double getPerimeter() {
-            return 2 * radius * Math.PI;
-        }
+    // Get Perimeter (Circumference)
+    public double getPerimeter() {
+        return 2 * Math.PI * radius;
+    }
 
-        // Move circle
-        public void translate(int dx, int dy) {
-            position.translate(dx, dy);
-        }
+    // Move position
+    public void translate(int dx, int dy) {
+        position.translate(dx, dy);
+    }
 
-        // Scale circle
-        public void scale(int factor, int sign, boolean both) {
+    // Scale size
+    public void scale(int factor, boolean sign) {
+        if (sign) {
             radius = radius * factor;
-
-            if (both) {
-                position.scale(factor, sign, both);
-            }
+        } else {
+            radius = radius / factor;
         }
+    }
 
-        // Display details
-        public String display() {
-            return "Circle with radius = " + radius +
-                    " at position " + position.display() +
-                    "\nArea: " + getArea() +
-                    "\nPerimeter: " + getPerimeter();
-        }
+    // Display details
+    public String display() {
+        return "Circle | Radius: " + radius +
+                " | Area: " + getArea() +
+                " | Perimeter: " + getPerimeter();
     }
 }

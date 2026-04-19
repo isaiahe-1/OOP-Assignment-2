@@ -1,43 +1,58 @@
-public class Square {
-    // Square class that extends Shape
-    public class Square extends Shape {
+public class Square extends Shape {
 
-        // Variable to store side length
-        private double side;
+    // Variables
+    private double side;
 
-        // Constructor
-        public Square(double s, Coordinates coord) {
-            super(4, coord);
-            side = s;
-        }
+    // Default constructor
+    public Square() {
+        super(4, new Coordinates(0, 0));
+        this.side = 1;
+    }
 
-        // To calculate area
-        public double getArea() {
-            return side * side;
-        }
+    // Constructor with values
+    public Square(double s, Coordinates coord) {
+        super(4, coord);
+        this.side = s;
+    }
 
-        // To calculate perimeter
-        public double getPerimeter() {
-            return 4 * side;
-        }
+    // Getter
+    public double getSide() {
+        return side;
+    }
 
-        // to move square
-        public void translate(int dx, int dy) {
-            position.translate(dx, dy);
-        }
+    // Setter
+    public void set_side(double side) {
+        this.side = side;
+    }
 
-        // scale square
-        public void scale(int factor, int sign, boolean both) {
+    // Calculate Area
+    public double getArea() {
+        return side * side;
+    }
+
+    // Calculate Perimeter
+    public double getPerimeter() {
+        return 4 * side;
+    }
+
+    // Translate square
+    public void translate(int dx, int dy) {
+        position.translate(dx, dy);
+    }
+
+    // Scale square
+    public void scale(int factor, boolean sign) {
+        if (sign) {
             side = side * factor;
-
-            if (both) {
-                position.scale(factor, sign, both);
-            }
+        } else {
+            side = side / factor;
         }
+    }
 
-        // Display
-        public String display() {
-            return "Square at " + position.display() + " side: " + side;
-        }
+    // Display details
+    public String display() {
+        return "Square with Side = " + side +
+                " Area: " + getArea() +
+                " Perimeter: " + getPerimeter();
     }
 }
